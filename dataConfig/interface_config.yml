@@ -1,0 +1,116 @@
+interface:
+  GetNotes:
+    mustKey: ['userid','startindex','rows']
+
+  SetCommonNote:
+    path: '/v3/notesvr/set/noteinfo'
+    mustKey: ['noteId']
+    optionKey: ['star']
+    base: {
+      'noteId': 'noteId',
+      'star': 0
+    }
+
+  SetNotesContent:
+    path: '/v3/notesvr/set/notecontent'
+    mustKey: ['noteId', 'title', 'summary', 'body', 'localContentVersion', 'bodyType']
+    base: {
+      'noteId': 'noteId',
+      'title': 'title',
+      'summary': 'summary',
+      'body':'body',
+      'localContentVersion': 'localContentVersion',
+      'bodyType': 0
+    }
+
+  DeleteNotesContent:
+    path: '/v3/notesvr/delete'
+    mustKey: ['noteId']
+    base: {
+      'noteId': 'noteId'
+    }
+
+  SetGroupNoteInfo:
+    path: '/v3/notesvr/set/noteinfo'
+    mustKey: ['noteId']
+    optionKeys: ['star', 'groupId']
+    base: {
+      'noteId': 'noteId',
+      'star': 0,
+      'groupId': 'groupId'
+    }
+
+  SetGroupNote:
+    path: '/v3/notesvr/set/notegroup'
+    mustKeys: ['groupId', 'groupName']
+    optionKey: ['order']
+    base: {
+      'groupId': 'groupId',
+      'groupName': 'groupName',
+      'order': 0
+    }
+
+  GetGroup:
+    path: '/v3/notesvr/get/notegroup'
+    optionKey: ['excludeInvalid']
+    base: {
+      'excludeInvalid': False
+    }
+
+  GetGroupNote:
+    path: '/v3/notesvr/web/getnotes/group'
+    mustKey: ['groupId']
+    optionKeys: ['startIndex', 'rows']
+    base: {
+      'groupId': 'groupId',
+      'startIndex': 0,
+      'rows': 10
+    }
+
+  DeleteGroup:
+    path: '/v3/notesvr/delete/notegroup'
+    mustKey: ['groupId']
+    base: {
+      'groupId': 'groupId'
+    }
+
+  SetRemindNote:
+    path: '/v3/notesvr/set/noteinfo'
+    mustKey: [ 'noteId' ]
+    optionKeys: ['star', 'remindTime', 'remindType']
+    base: {
+      'noteId': 'noteId',
+      'star': 0,
+      'remindTime': 'remindTime',
+      'remindType': 0
+    }
+
+  GetRemindNote:
+    path: '/v3/notesvr/web/getnotes/remind'
+    mustKeys: ['remindStartTime', 'remindEndTime', 'startIndex', 'rows']
+    base: {
+      'remindStartTime': 'remindStartTime',
+      'remindEndTime': 'remindEndTime',
+      'startIndex': 0,
+      'rows': 999
+    }
+
+  ClearNotes:
+    path: '/v3/notesvr/cleanrecyclebin'
+    mustKey: ['noteIds']
+    base: {
+      'noteIds': ['-1']
+    }
+
+  GetDeleteNotes:
+    mustKey: ['userId', 'startIndex', 'rows']
+
+  RecoverDeleteNotes:
+    mustKey: ['userId', 'noteIds']
+    base: {
+      'userId': 'userId',
+      'noteIds': 'noteIds'
+    }
+
+
+
